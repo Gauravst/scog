@@ -1,1 +1,2 @@
-# save-system
+# SCOG 
+## system config on github
