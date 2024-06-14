@@ -1,6 +1,6 @@
 import { execSync } from "child_process";
 
-const runCommand = (command) => {
+const runCommand = async (command) => {
   try {
     execSync(command, { stdio: "inherit" });
     return true;

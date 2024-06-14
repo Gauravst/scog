@@ -1,22 +1,13 @@
 import { promises as fs } from "fs";
 import path from "path";
+import os from "os";
 import { fileURLToPath } from "url";
 import { createSpinner } from "nanospinner";
+import runCommand from "../components/runCommand.js";
 
-import runCommand from "./components/runCommand";
-
-const homeDir = $HOME;
+const homeDir = os.homedir();
 const backupDir = path.join(homeDir, "scog");
 const commitMsg = `Backup on ${new Date().toISOString()}`;
-const tmuxConf = path.join(homeDir, "./config/tmux/tmux.config");
-
-async function createBackupDir() {
-  try {
-    await fs.mkdir(backupDir, { recursive: true });
-  } catch (err) {
-    console.error("Error creating backup directory:", err);
-  }
-}
 
 async function copyConfigs() {
   try {

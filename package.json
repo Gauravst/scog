@@ -22,10 +22,12 @@
   "dependencies": {
     "chalk": "^4.1.2",
     "chalk-animation": "^2.0.3",
+    "commander": "^12.1.0",
     "figlet": "^1.5.2",
     "gradient-string": "^2.0.0",
     "inquirer": "^8.2.0",
     "nanospinner": "^1.1.0",
+    "sqlite": "^5.1.1",
     "sqlite3": "^5.1.7"
   }
 }

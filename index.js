@@ -1,42 +1,46 @@
 #!/usr/bin/env node
 
-import commander from "commander";
-
-import init from "./src/init.js";
-import backup from "./src/backup.js";
-import restore from "./src/restore.js";
-import addFiles from "./src/addFiles.js";
+import { Command } from "commander";
+import init from "./src/functions/init.js";
+// import backup from "./src/functions/backup.js";
+// import restore from "./src/functions/restore.js";
+// import addFiles from "./src/functions/addFiles.js";
 
 async function main() {
-  commander
+  const program = new Command();
+
+  program
     .command("init")
     .description("initialize")
-    .action(() => {
-      init();
+    .action(async () => {
+      await init();
     });
 
-  commander
-    .command("backup")
-    .description("backup your config & push github")
-    .action(() => {
-      backup();
-    });
-
-  commander
-    .command("restore")
-    .description("restore config to your system")
-    .action(() => {
-      restore();
-    });
-
-  commander
-    .command("file")
-    .description("add folder and file")
-    .action(() => {
-      addFiles();
-    });
-
-  await commander.parseAsync(process.argv);
+  // program
+  //   .command("backup")
+  //   .description("backup your config & push to github")
+  //   .action(async () => {
+  //     await backup();
+  //   });
+  //
+  // program
+  //   .command("restore")
+  //   .description("restore config to your system")
+  //   .action(async () => {
+  //     await restore();
+  //   });
+  //
+  // program
+  //   .command("file")
+  //   .description("add folder and file")
+  //   .action(async () => {
+  //     await addFiles();
+  //   });
+  //
+  await program.parseAsync(process.argv);
 }
 
-main();
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});
